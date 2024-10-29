@@ -30,16 +30,15 @@ cloudinary.config({
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
 })
+// frontend load
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/dist', 'index.html'))
+})
 
 // ROUTERS
 app.use('/api/places', authenticateUser, placeRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/users', authenticateUser, userRouter)
-
-// frontend load
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './public/dist', 'index.html'))
-})
 
 // NOT FOUND AND ERROR MIDDLEWARE
 app.use('*', (req, res) => {
