@@ -38,7 +38,7 @@ app.use('/api/users', authenticateUser, userRouter)
 
 // frontend load
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './public/dist', 'index.html'))
+  res.sendFile(path.resolve(__dirname, './public', 'index.html'))
 })
 
 // NOT FOUND AND ERROR MIDDLEWARE
